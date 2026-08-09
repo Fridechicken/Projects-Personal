@@ -1,12 +1,35 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 int main(){
+    srand(time(0));
     int gamesettings;
     cout << "Enter 1 to play against the computer or 2 to play two player: ";
     cin >> gamesettings;
     if (gamesettings == 1) {
-        cout << "Still figuring out a set and random in c++. Please hold";
+        int randomNum = rand() % 3;
+        string input1;
+        cout << "Player 1, please enter rock, paper, or scissor: ";
+        cin >> input1;
+        if ((input1 == "rock" && randomNum == 1) || (input1 == "paper" && randomNum == 2) || (input1 == "scissor" && randomNum == 0)) {
+            cout << "It's a tie!";
+        } else if (input1 == "rock" && randomNum == 0) {
+            cout << "rock beats scissors, player 1 wins";
+        } else if (input1 == "paper" && randomNum == 1) {
+            cout << "paper beats rock, player 1 wins";
+        } else if (input1 == "scissor" && randomNum == 2) {
+            cout << "scissor beats paper, player 1 wins";
+        } else if (input1 == "rock" && randomNum == 2) {
+            cout << "paper beats rock, the computer wins";
+        } else if (input1 == "scissor" && randomNum == 1) {
+            cout << "rock beats scissors, the computer wins";
+        } else if (input1 == "paper" && randomNum == 0) {
+            cout << "scissor beats paper, the computer wins";
+        } else {
+            cout << "Please enter a valid option";
+        }
     } else if (gamesettings == 2) {
         string input1;
         cout << "Player 1, please enter rock, paper, or scissor: ";
@@ -14,10 +37,22 @@ int main(){
         string input2;
         cout << "Player 2, please enter rock, paper, or scissor: ";
         cin >> input2;    
-        cout << "Player 1 picked: " << input1 << "\n";
-        cout << "Player 2 picked: " << input2;
-        if (input1 == "rock" && input2 == "scissor") {
-            cout << "Rock beats scissors, player 1 wins";
+        if (input1 == input2) {
+            cout << "It's a tie";
+        } else if (input1 == "rock" && input2 == "scissor") {
+            cout << "rock beats scissors, player 1 wins";
+        } else if (input1 == "paper" && input2 == "rock") {
+            cout << "paper beats rock, player 1 wins";
+        } else if (input1 == "scissor" && input2 == "paper") {
+            cout << "scissor beats paper, player 1 wins";
+        } else if (input1 == "rock" && input2 == "paper") {
+            cout << "paper beats rock, player 2 wins";
+        } else if (input1 == "scissor" && input2 == "rock") {
+            cout << "rock beats scissors, player 2 wins";
+        } else if (input1 == "paper" && input2 == "scissor") {
+            cout << "scissor beats paper, player 2 wins";
+        } else {
+            cout << "Please enter a valid option";
         }
     } else {
         cout << "Please enter a valid option";
